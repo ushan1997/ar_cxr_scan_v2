@@ -1,13 +1,13 @@
-
+import 'package:ar_cxr_scan/screen/cxr_disease_identification/cxr_image_classify.dart';
+import 'package:ar_cxr_scan/screen/disease_area_identify/dieseas_area_screen.dart';
+import 'package:ar_cxr_scan/screen/medical_recommandation/view/mainpage.dart';
+import 'package:ar_cxr_scan/screen/visualize_x_ray_using_ar/ar_config_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'cxr_disease_identification/cxr_image_classify.dart';
-import 'disease_area_identify/dieseas_area_screen.dart';
 import 'home.dart';
-import 'medical_recommandation/recommandation_screen.dart';
+import 'medical_recommandation/view/reccomendation.dart';
 import 'predicting probability diseases/symptoms_input_screen.dart';
-import 'visualize_x_ray_using_ar/ar_config_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -75,7 +75,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const RecommandationScreen(),
+                  builder: (context) => const mainpage(),
                 ),
               );
             },
@@ -87,7 +87,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => RecommandationScreen(),
+                  builder: (context) => const mainpage(),
                 ),
               );
             },
@@ -99,7 +99,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const RecommandationScreen(),
+                  builder: (context) => const mainpage(),
                 ),
               );
             },

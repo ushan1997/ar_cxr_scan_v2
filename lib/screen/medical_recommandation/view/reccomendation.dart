@@ -2,10 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cool_alert/cool_alert.dart';
-import 'package:ar_cxr_scan/screen/medical_recommandation/Condition.dart';
-import 'package:ar_cxr_scan/screen/medical_recommandation/Medicine.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import '../../title_bar.dart';
+import '../models/Condition.dart';
+import '../models/Medicine.dart';
 
 class RecommandationScreen extends StatefulWidget {
   const RecommandationScreen({Key? key}) : super(key: key);
@@ -87,7 +90,7 @@ class _RecommandationScreenState extends State<RecommandationScreen> {
   Future Recommand() async {
     try {
       final response = await http.post(
-        Uri.parse('http://10.0.2.2:3000/recommand'),
+        Uri.parse('http://10.0.2.2:7500/recommand'),
         body: jsonEncode([
           {
             "drugName_n": medDropdownValue!.id,
@@ -129,7 +132,11 @@ class _RecommandationScreenState extends State<RecommandationScreen> {
     final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Medical Recommandation'),
+        elevation: 0,
+        backgroundColor: Color.fromARGB(255, 143, 139, 139),
+        title: const TitleBar(
+          sectionName: "Medical Recommandation",
+        ),
       ),
       body: isLoading
           ? const Center(
@@ -213,7 +220,7 @@ class _RecommandationScreenState extends State<RecommandationScreen> {
                           Expanded(
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.blue,
+                                  primary: Colors.red,
                                   minimumSize: const Size(40, 40),
                                 ),
                                 onPressed: () async {

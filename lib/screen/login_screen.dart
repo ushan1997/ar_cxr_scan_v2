@@ -1,8 +1,7 @@
 
+import 'package:ar_cxr_scan/screen/home.dart';
+import 'package:ar_cxr_scan/screen/title_bar.dart';
 import 'package:flutter/material.dart';
-
-import 'home.dart';
-import 'title_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

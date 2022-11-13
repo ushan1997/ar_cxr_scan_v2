@@ -15,18 +15,6 @@ class TitleBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start, //down axisi | allighnment
       mainAxisSize: MainAxisSize.min, //main axis => allighnment
       children: [
-        Image.asset(
-          'assets/cxr.jpg',
-          height: 25,
-        ),
-        const SizedBox(width: 8),
-        const Text(
-          'CXR Scan',
-          style: TextStyle(
-            color: Color.fromARGB(255, 121, 183, 255),
-            fontSize: 16,
-          ),
-        ),
         Text(
           // ignore: unnecessary_string_interpolations
           ' $sectionName',

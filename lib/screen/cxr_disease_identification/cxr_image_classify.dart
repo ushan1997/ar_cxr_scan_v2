@@ -1,3 +1,4 @@
+import 'package:ar_cxr_scan/screen/title_bar.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,9 +8,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-
-import '../title_bar.dart';
 
 class CXRImageClassify extends StatefulWidget {
   const CXRImageClassify({Key? key}) : super(key: key);
@@ -27,6 +25,9 @@ class _CXRImageClassifyState extends State<CXRImageClassify> {
       final String jsonConfig =
           await rootBundle.loadString('assets/host_config.json');
       final jsonHostData = await json.decode(jsonConfig);
+      print("########################### URL--->" +
+          jsonHostData["cxr_classify_host"] +
+          "#####################");
       final request = http.MultipartRequest(
           "POST", Uri.parse(jsonHostData["cxr_classify_host"] + "/predict"));
 
@@ -79,7 +80,7 @@ class _CXRImageClassifyState extends State<CXRImageClassify> {
                 onPressed: uploadImage,
                 icon: Icon(Icons.upload_file, color: Colors.white),
                 label: Text(
-                  "Upload",
+                  "Predict Result",
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -88,9 +89,9 @@ class _CXRImageClassifyState extends State<CXRImageClassify> {
                 ? Padding(
                     padding: EdgeInsets.all(2.0),
                     child: Text(
-                      message,
+                      "Predicted Disease = " + message,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 192, 61, 61),
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'RobotoMono',

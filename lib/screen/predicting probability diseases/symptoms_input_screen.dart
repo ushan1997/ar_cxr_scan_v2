@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:ar_cxr_scan/screen/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:cool_alert/cool_alert.dart';
-
-import '../title_bar.dart';
 
 class SymptomsInputScreen extends StatefulWidget {
   const SymptomsInputScreen({Key? key}) : super(key: key);
@@ -52,7 +50,7 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
           await rootBundle.loadString('assets/host_config.json');
       final jsonHostData = await json.decode(jsonConfig);
       final response = await http.post(
-        Uri.parse(jsonHostData["predict_dieases"] + '/disease/predict'),
+        Uri.parse('http://10.0.2.2:4000/disease/predict'),
         body: jsonEncode([
           {
             "Age": ageController.text,
@@ -213,8 +211,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Air Pollution cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -236,8 +237,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Alcohol use cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -259,8 +263,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Dust Allergy cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -282,8 +289,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "OccuPational Hazards cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -305,8 +315,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Genetic Risk cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -328,8 +341,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Chronic Lung Disease cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -351,8 +367,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Balanced Diet cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -374,8 +393,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Obesity cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -397,8 +419,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Smoking cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -420,8 +445,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Passive Smoking cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -443,8 +471,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Chest Pain cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -466,8 +497,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Coughing of Blood cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -489,8 +523,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Fatigue cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -512,8 +549,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Weight Loss cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -535,8 +575,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Shortness of Breath cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -558,8 +601,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Wheezing cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -581,8 +627,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "SwalHealthying Difficulty cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -604,8 +653,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Clubbing of Finger Nails cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -627,8 +679,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Frequent Cold cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -650,8 +705,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Dry Cough cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -673,8 +731,11 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                           if (value == null || value.isEmpty) {
                             return "Snoring cannot be empty";
                           }
-                          if (value.length > 1) {
-                            return "Number must be in not more than 9";
+                          if (int.parse(value) > 9) {
+                            return "Number must be not greater than 9";
+                          }
+                          if (int.parse(value) < 0) {
+                            return "Number must be not less than 0";
                           } else {
                             return null;
                           }
@@ -686,22 +747,6 @@ class _SymptomsInputScreenState extends State<SymptomsInputScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          // Expanded(
-                          //   child: ElevatedButton(
-                          //     style: ElevatedButton.styleFrom(
-                          //       primary: Colors.red,
-                          //       minimumSize: const Size(40, 40),
-                          //     ),
-                          //     onPressed: () {
-                          //       Navigator.push(
-                          //           context,
-                          //           MaterialPageRoute(
-                          //               builder: (context) =>
-                          //                   const PartScreen()));
-                          //     },
-                          //     child: const Text("Cancel"),
-                          //   ),
-                          // ),
                           const SizedBox(
                             width: 15,
                           ),
